@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { FormPage } from "./pages/FormPage";
+import { LandingPage } from "./pages/LandingPage";
 
 function App() {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleShowForm = () => {
+    setShowForm(!showForm);
+  };
   return (
-    <div className="App">
-      <h1>clean project</h1>
+    <div>
+      {!showForm ? (
+        <LandingPage goToForm={handleShowForm} />
+      ) : (
+        <FormPage goToHome={handleShowForm} />
+      )}
     </div>
   );
 }
