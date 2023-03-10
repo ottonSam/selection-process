@@ -11,7 +11,7 @@ import { FormPage } from "./pages/FormPage";
 import { LandingPage } from "./pages/LandingPage";
 
 function App() {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", dark);
+  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme", light);
   const [showForm, setShowForm] = useState(false);
 
   const toggleTheme = () => {
@@ -29,6 +29,7 @@ function App() {
       ) : (
         <FormPage goToHome={handleShowForm} />
       )}
+      <button onClick={toggleTheme}>Change theme</button>
     </ThemeProvider>
   );
 }
