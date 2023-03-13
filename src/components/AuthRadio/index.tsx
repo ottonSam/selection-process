@@ -2,7 +2,6 @@ import {
   Checkbox,
   FormControlLabel,
   FormLabel,
-  Radio,
   RadioGroup,
 } from "@mui/material";
 import React from "react";
