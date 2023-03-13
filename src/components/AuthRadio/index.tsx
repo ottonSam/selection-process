@@ -1,15 +1,42 @@
-import { FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 import React from "react";
+import { useFormContext } from "react-hook-form";
 
 import { Container } from "./styles";
 
 const AuthRadio = () => {
+  const { watch, setValue } = useFormContext();
+
   return (
     <Container>
       <FormLabel>Autorizo o uso dos meus dados</FormLabel>
       <RadioGroup>
-        <FormControlLabel value="female" control={<Radio />} label="Sim" />
-        <FormControlLabel value="male" control={<Radio />} label="Não" />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={watch("auth") || false}
+              onChange={(e) => setValue("auth", !watch("auth"))}
+            />
+          }
+          labelPlacement="end"
+          label={"Sim"}
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={!watch("auth") || false}
+              onChange={(e) => setValue("auth", !watch("auth"))}
+            />
+          }
+          labelPlacement="end"
+          label={"Não"}
+        />
       </RadioGroup>
     </Container>
   );
