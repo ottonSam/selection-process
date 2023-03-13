@@ -6,8 +6,8 @@ const light = {
   colors: {
     primary: "#90caf9",
     secondary: "#ce93d8",
-
     background: grey[50],
+    border: grey[400],
     text: grey[900],
   },
 };

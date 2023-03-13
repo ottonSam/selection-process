@@ -7,9 +7,9 @@ export const Container = styled.div`
 `;
 
 export const CheckBoxContainer = styled.div`
-  border: 1px solid grey;
+  border: 1px solid ${(props) => props.theme.colors.border};
   margin-top: 0.5rem;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-around;
   padding: 1rem;

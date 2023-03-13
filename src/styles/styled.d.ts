@@ -7,8 +7,8 @@ declare module "styled-components" {
     colors: {
       primary: string;
       secondary: string;
-
       background: string;
+      border: string;
       text: string;
     };
   }

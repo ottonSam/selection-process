@@ -3,6 +3,7 @@ import { Button, styled as MuiStyled } from "@mui/material";
 
 export const FormContainer = styled.div`
   margin: auto;
+  padding: 5px;
   margin-top: 2rem;
   max-width: 720px;
   display: flex;

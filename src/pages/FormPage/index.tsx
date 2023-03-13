@@ -10,6 +10,7 @@ import TecCheckBox from "../../components/TecCheckBox";
 import TextArea from "../../components/TextArea";
 import TextField from "../../components/TextField";
 import validationSchema from "../../utils/validationSchema";
+import { Divider } from "@mui/material";
 
 interface IProps {
   goToHome: () => void;
@@ -41,21 +42,20 @@ const FormPage = ({ goToHome }: IProps) => {
 
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
     fetch("http://api.webhookinbox.com/i/h2OWKJqx/in/", {
-      // Enter your IP address here
-
       method: "POST",
       mode: "cors",
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
+      body: JSON.stringify(data),
     });
   };
   return (
     <FormContainer>
+      <FormLabel>Formulário de submissão</FormLabel>
+      <Divider />
       <FormProvider {...methods}>
         <form
           autoComplete="off"
           onSubmit={methods.handleSubmit(formSubmitHandler)}
         >
-          <FormLabel>Formulário de submissão</FormLabel>
           <GitData />
           <TextField name="email" label="Email" />
           <TextArea />

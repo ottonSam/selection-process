@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -60,11 +61,11 @@ const GitData = () => {
       <InputGroup>
         <TextField label="User git" name="git_user" />
         <Button
-          sx={{ width: "300px", marginTop: "1rem" }}
+          sx={{ width: "50px", marginTop: "1rem" }}
           color="secondary"
           onClick={SearchUser}
         >
-          Pesquisar usuário
+          <SearchIcon />
         </Button>
       </InputGroup>
       {!!userData && (
