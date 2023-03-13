@@ -20,7 +20,7 @@ const FormPage = ({ goToHome }: IProps) => {
       <FileField />
       <AuthRadio />
       <SubmitButton onClick={goToHome} variant="outlined" color="secondary">
-        Voltar para a home
+        Enviar currículo
       </SubmitButton>
     </FormContainer>
   );

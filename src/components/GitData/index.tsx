@@ -50,7 +50,11 @@ const GitData = () => {
     <Container>
       <InputGroup>
         <TextField label="User git" name="username" />
-        <Button sx={{ width: "300px" }} onClick={(e) => SearchUser("ottonsam")}>
+        <Button
+          sx={{ width: "300px", marginTop: "1rem" }}
+          color="secondary"
+          onClick={(e) => SearchUser("ottonsam")}
+        >
           Pesquisar usuário
         </Button>
       </InputGroup>

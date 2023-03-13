@@ -11,6 +11,7 @@ export const FormContainer = styled.div`
 
 export const FormLabel = styled.h2`
   font-size: 2rem;
+  align-self: center;
   margin-bottom: 1rem;
 `;
 

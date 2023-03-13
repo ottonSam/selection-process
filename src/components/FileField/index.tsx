@@ -1,10 +1,7 @@
-import { TextField } from "@mui/material";
-import React from "react";
-
-// import { Container } from './styles';
+import { FileFieldComponent } from "./styles";
 
 const FileField = () => {
-  return <TextField type="file" />;
+  return <FileFieldComponent type="file" />;
 };
 
 export default FileField;
