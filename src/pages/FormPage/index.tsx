@@ -19,7 +19,7 @@ interface IProps {
 interface IFormInputs {
   git_user: string;
   name: string;
-  image: string;
+  image?: string;
   repository: {
     label: string;
     value: string;
@@ -41,11 +41,14 @@ const FormPage = ({ goToHome }: IProps) => {
   });
 
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
-    fetch("http://api.webhookinbox.com/i/h2OWKJqx/in/", {
+    console.log(data);
+    fetch("http://api.webhookinbox.com/i/MSuFZpe3/in/", {
       method: "POST",
       mode: "cors",
       body: JSON.stringify(data),
     });
+    methods.reset();
+    goToHome();
   };
   return (
     <FormContainer>

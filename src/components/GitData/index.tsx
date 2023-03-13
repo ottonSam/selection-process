@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 import GitUser from "../GitUser";
@@ -14,6 +14,31 @@ const GitData = () => {
 
   const { watch, setValue, resetField } = useFormContext();
 
+  useEffect(() => {
+    const searchRepos = async () => {
+      const userReposRequest = await fetch(userData.repos_url).then(
+        async (reposResponse) => {
+          if (reposResponse.status !== 200) {
+            return null;
+          } else {
+            const data = await reposResponse.json();
+            const response = data.map((item: any) => {
+              const object = {
+                label: item.name,
+                value: item.html_url,
+              };
+              return object;
+            });
+            return response;
+          }
+        }
+      );
+      setUserRepos(userReposRequest);
+    };
+
+    userData && searchRepos();
+  }, [userData]);
+
   const SearchUser = async () => {
     resetField("name");
     resetField("image");
@@ -26,24 +51,6 @@ const GitData = () => {
           return null;
         } else {
           const userData = await successResponse.json();
-          const userReposRequest = await fetch(userData.repos_url).then(
-            async (reposResponse) => {
-              if (reposResponse.status !== 200) {
-                return null;
-              } else {
-                const data = await reposResponse.json();
-                const response = data.map((item: any) => {
-                  const object = {
-                    label: item.name,
-                    value: item.html_url,
-                  };
-                  return object;
-                });
-                return response;
-              }
-            }
-          );
-          setUserRepos(userReposRequest);
           setValue("name", userData.name);
           setValue("image", userData.avatar_url);
           return userData;
