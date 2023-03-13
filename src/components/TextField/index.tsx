@@ -5,8 +5,8 @@ interface IProps {
   label: string;
 }
 
-const TextFieldComponent = ({ label, name }: IProps) => {
+const TextField = ({ label, name }: IProps) => {
   return <TextFieldInput label={label} />;
 };
 
-export default TextFieldComponent;
+export default TextField;

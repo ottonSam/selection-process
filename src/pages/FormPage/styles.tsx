@@ -7,7 +7,6 @@ export const FormContainer = styled.div`
   max-width: 720px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const FormLabel = styled.h2`
