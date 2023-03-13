@@ -1,12 +1,13 @@
+import { grey, purple, yellow } from "@mui/material/colors";
+
 const dark = {
   title: "dark",
 
   colors: {
-    primary: "#333",
-    secondary: "#C62E65",
-
-    background: "#222",
-    text: "#fff",
+    primary: purple[400],
+    secondary: yellow[300],
+    background: grey[900],
+    text: grey[100],
   },
 };
 

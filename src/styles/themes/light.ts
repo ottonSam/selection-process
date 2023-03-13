@@ -1,12 +1,14 @@
+import { grey } from "@mui/material/colors";
+
 const light = {
   title: "light",
 
   colors: {
-    primary: "#C62E65",
-    secondary: "#D63AF9",
+    primary: "#90caf9",
+    secondary: "#ce93d8",
 
-    background: "#f5f5f5",
-    text: "#333",
+    background: grey[100],
+    text: grey[900],
   },
 };
 
