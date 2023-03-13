@@ -1,8 +1,8 @@
-interface ILandingPageProps {
+interface IProps {
   goToForm: () => void;
 }
 
-const LandingPage = ({ goToForm }: ILandingPageProps) => {
+const LandingPage = ({ goToForm }: IProps) => {
   return (
     <div>
       <h1>LandingPage</h1>
