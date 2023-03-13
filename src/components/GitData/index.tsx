@@ -49,7 +49,7 @@ const GitData = () => {
   return (
     <Container>
       <InputGroup>
-        <TextField label="User git" name="username" />
+        <TextField label="User git" name="git_user" />
         <Button
           sx={{ width: "300px", marginTop: "1rem" }}
           color="secondary"
