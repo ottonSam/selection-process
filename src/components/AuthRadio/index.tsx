@@ -21,7 +21,7 @@ const AuthRadio = () => {
           control={
             <Checkbox
               checked={watch("auth") || false}
-              onChange={(e) => setValue("auth", !watch("auth"))}
+              onClick={(e) => setValue("auth", !watch("auth"))}
             />
           }
           labelPlacement="end"
@@ -31,7 +31,7 @@ const AuthRadio = () => {
           control={
             <Checkbox
               checked={!watch("auth") || false}
-              onChange={(e) => setValue("auth", !watch("auth"))}
+              onClick={(e) => setValue("auth", !watch("auth"))}
             />
           }
           labelPlacement="end"
