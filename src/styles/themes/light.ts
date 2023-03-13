@@ -7,7 +7,7 @@ const light = {
     primary: "#90caf9",
     secondary: "#ce93d8",
 
-    background: grey[100],
+    background: grey[50],
     text: grey[900],
   },
 };
