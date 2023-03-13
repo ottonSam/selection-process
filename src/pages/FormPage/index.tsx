@@ -19,7 +19,10 @@ interface IFormInputs {
   git_user: string;
   name: string;
   image: string;
-  repository: string;
+  repository: {
+    label: string;
+    value: string;
+  };
   email: string;
   description: string;
   react: boolean;
@@ -37,7 +40,13 @@ const FormPage = ({ goToHome }: IProps) => {
   });
 
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
-    alert(JSON.stringify(data));
+    fetch("http://api.webhookinbox.com/i/h2OWKJqx/in/", {
+      // Enter your IP address here
+
+      method: "POST",
+      mode: "cors",
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
   };
   return (
     <FormContainer>

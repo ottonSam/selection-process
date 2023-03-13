@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 
 import GitUser from "../GitUser";
 import TextField from "../TextField";
@@ -9,9 +10,15 @@ import { Container, InputGroup } from "./styles";
 const GitData = () => {
   const [userRepos, setUserRepos] = useState<any>([]);
   const [userData, setUserData] = useState<any>();
-  const SearchUser = async (user: string) => {
+
+  const { watch, setValue, resetField } = useFormContext();
+
+  const SearchUser = async () => {
+    resetField("name");
+    resetField("image");
+    resetField("repository");
     const userRequest = await fetch(
-      `https://api.github.com/users/${user}`
+      `https://api.github.com/users/${watch("git_user")}`
     ).then(
       async (successResponse) => {
         if (successResponse.status !== 200) {
@@ -36,6 +43,8 @@ const GitData = () => {
             }
           );
           setUserRepos(userReposRequest);
+          setValue("name", userData.name);
+          setValue("image", userData.avatar_url);
           return userData;
         }
       },
@@ -53,7 +62,7 @@ const GitData = () => {
         <Button
           sx={{ width: "300px", marginTop: "1rem" }}
           color="secondary"
-          onClick={(e) => SearchUser("ottonsam")}
+          onClick={SearchUser}
         >
           Pesquisar usuário
         </Button>

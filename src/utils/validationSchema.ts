@@ -4,7 +4,10 @@ const validationSchema = yup.object().shape({
   git_user: yup.string().min(3).required(),
   name: yup.string().required(),
   image: yup.string(),
-  repository: yup.string().required(),
+  repository: yup.object({
+    label: yup.string().required(),
+    value: yup.string().required(),
+  }),
   email: yup.string().required(),
   description: yup.string().min(50).max(1000).required(),
   react: yup.boolean().required().default(false),

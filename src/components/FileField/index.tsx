@@ -13,7 +13,6 @@ const FileField = () => {
       <Controller
         name="curriculum"
         control={control}
-        defaultValue=""
         render={({ field }) => {
           return (
             <FileFieldComponent

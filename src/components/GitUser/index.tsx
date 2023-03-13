@@ -6,6 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 
 // import { Container } from './styles';
 
@@ -21,6 +22,8 @@ interface IProps {
 }
 
 const GitUser = ({ name, repos, avatar_url }: IProps) => {
+  const { control, watch } = useFormContext();
+
   return (
     <Card sx={{ marginBottom: 2 }}>
       <CardContent>
@@ -28,13 +31,35 @@ const GitUser = ({ name, repos, avatar_url }: IProps) => {
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
-        <Autocomplete
-          disablePortal
-          id="combo-box-demo"
-          options={repos}
-          renderInput={(params) => (
-            <TextField {...params} label="Repositórios" />
-          )}
+        <Controller
+          name="repository"
+          control={control}
+          render={({ field, fieldState }) => {
+            return (
+              <Autocomplete
+                {...field}
+                disabled={!repos.length}
+                options={repos}
+                value={watch("repository") || null}
+                isOptionEqualToValue={(option, value) =>
+                  option.value === value.value
+                }
+                sx={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label={"Projeto de apresentação"}
+                    variant="standard"
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                  />
+                )}
+                onChange={(_, data) => {
+                  field.onChange(data);
+                }}
+              />
+            );
+          }}
         />
       </CardContent>
     </Card>
