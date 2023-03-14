@@ -27,8 +27,7 @@ const validationSchema = yup.object().shape({
   curriculum: yup.mixed().required("É necessário informar seu currículo."),
   auth: yup
     .boolean()
-    .required()
-    .default(true)
+    .required("Você precisa autorizar o uso dos dados")
     .oneOf(
       [true],
       "É preciso aceitar o uso dos dados para o envio do formulário."
