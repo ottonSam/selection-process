@@ -14,7 +14,6 @@ function AppAppBar({ goToHome, toggleTheme }: IProps) {
     <div>
       <AppBar position="fixed" sx={{ backgroundColor: "#121212" }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Box sx={{ flex: 1 }} />
           <Link
             variant="h6"
             underline="none"
