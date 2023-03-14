@@ -1,7 +1,9 @@
-import { Alert, Button, Snackbar } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
+import axios from "axios";
+
+import { Alert, Button, Snackbar } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 import GitUser from "../GitUser";
 import TextField from "../TextField";
@@ -10,7 +12,7 @@ import { Container, InputGroup } from "./styles";
 
 const GitData = () => {
   const [userRepos, setUserRepos] = useState<any>([]);
-  const [userData, setUserData] = useState<any>();
+  const [reposUrl, setReposUrl] = useState<string>();
   const [open, setOpen] = useState<boolean>(false);
 
   const handleClose = (
@@ -28,51 +30,61 @@ const GitData = () => {
 
   useEffect(() => {
     const searchRepos = async () => {
-      const userReposRequest = await fetch(userData.repos_url).then(
-        async (reposResponse) => {
-          if (reposResponse.status !== 200) {
+      const userReposRequest = await axios({
+        method: "get",
+        url: reposUrl,
+      })
+        .then(async (response) => {
+          if (response.status !== 200) {
             return null;
-          } else {
-            const data = await reposResponse.json();
-            const response = data.map((item: any) => {
-              const object = {
-                label: item.name,
-                value: item.html_url,
-              };
-              return object;
-            });
-            return response;
           }
-        }
-      );
+          const data = await response.data;
+          const reposData = data.map((item: any) => {
+            return {
+              label: item.name,
+              value: item.html_url,
+            };
+          });
+          return reposData;
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.error(error.response.data);
+            console.error(error.response.status);
+          }
+        });
       setUserRepos(userReposRequest);
     };
 
-    userData && searchRepos();
-  }, [userData]);
+    reposUrl && searchRepos();
+  }, [reposUrl]);
+  console.log(reposUrl);
 
   const SearchUser = async () => {
     resetField("name");
     resetField("image");
     resetField("repository");
-    const userRequest = await fetch(
-      `https://api.github.com/users/${watch("git_user")}`
-    ).then(
-      async (successResponse) => {
-        if (successResponse.status !== 200) {
+
+    await axios({
+      method: "get",
+      url: `https://api.github.com/users/${watch("git_user")}`,
+    })
+      .then(async (response) => {
+        if (response.status !== 200) {
           setOpen(true);
-        } else {
-          const userData = await successResponse.json();
-          setValue("name", userData.name);
-          setValue("image", userData.avatar_url);
-          return userData;
+          return;
         }
-      },
-      (failResponse) => {
-        setOpen(true);
-      }
-    );
-    setUserData(userRequest);
+        const userData = response.data;
+        setValue("name", userData.name);
+        setValue("image", userData.avatar_url);
+        setReposUrl(userData.repos_url);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.error(error.response.data);
+          console.error(error.response.status);
+        }
+      });
   };
 
   return (
@@ -87,11 +99,11 @@ const GitData = () => {
           <SearchIcon />
         </Button>
       </InputGroup>
-      {!!userData && (
+      {!!reposUrl && (
         <GitUser
-          name={userData.name}
+          name={watch("name")}
           repos={userRepos}
-          avatar_url={userData.avatar_url}
+          avatar_url={watch("image")}
         />
       )}
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
