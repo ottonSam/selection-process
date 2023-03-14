@@ -13,6 +13,7 @@ import GlobalStyle from "./styles/global";
 import { FormPage } from "./pages/FormPage";
 import { LandingPage } from "./pages/LandingPage";
 import muiDark from "./styles/themes/muiDark";
+import AppAppBar from "./components/AppAppBar";
 
 const themes: [DefaultTheme, Theme][] = [
   [light, muiLight],
@@ -27,19 +28,23 @@ function App() {
     setTheme(theme === 0 ? 1 : 0);
   };
 
-  const handleShowForm = () => {
-    setShowForm(!showForm);
+  const goToHome = () => {
+    setShowForm(false);
+  };
+
+  const goToForm = () => {
+    setShowForm(true);
   };
   return (
     <ThemeProvider theme={themes[theme][0]}>
       <MuiThemeProvider theme={themes[theme][1]}>
         <GlobalStyle />
+        <AppAppBar goToHome={goToHome} toggleTheme={toggleTheme} />
         {!showForm ? (
-          <LandingPage goToForm={handleShowForm} />
+          <LandingPage goToForm={goToForm} />
         ) : (
-          <FormPage goToHome={handleShowForm} />
+          <FormPage goToHome={goToHome} />
         )}
-        <button onClick={toggleTheme}>Change theme</button>
       </MuiThemeProvider>
     </ThemeProvider>
   );
