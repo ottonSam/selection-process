@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import AppBar from "./AppBar";
-import { Toolbar } from "./styles";
+import { Logo, Toolbar } from "./styles";
 
 interface IProps {
   goToHome: () => void;
@@ -19,9 +19,8 @@ function AppAppBar({ goToHome, toggleTheme }: IProps) {
             underline="none"
             color="inherit"
             onClick={goToHome}
-            sx={{ fontSize: 24 }}
           >
-            {"TechVanguard"}
+            <Logo color="primary">techV</Logo>
           </Link>
           <Box
             sx={{

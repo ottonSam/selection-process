@@ -11,6 +11,6 @@ export default createGlobalStyle`
     background: ${(props) => props.theme.colors.background};
     font-size: 13px;
     color: ${(props) => props.theme.colors.text};
-    font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
   }
 `;
