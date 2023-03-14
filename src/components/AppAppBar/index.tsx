@@ -22,7 +22,7 @@ function AppAppBar({ goToHome, toggleTheme }: IProps) {
             onClick={goToHome}
             sx={{ fontSize: 24 }}
           >
-            {"onepirate"}
+            {"TechVanguard"}
           </Link>
           <Box
             sx={{

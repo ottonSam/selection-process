@@ -52,7 +52,7 @@ const FormPage = ({ goToHome }: IProps) => {
   };
   return (
     <FormContainer>
-      <FormLabel>Formulário de submissão</FormLabel>
+      <FormLabel>Trabalhe conosco</FormLabel>
       <Divider />
       <FormProvider {...methods}>
         <form
