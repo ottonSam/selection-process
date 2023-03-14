@@ -13,7 +13,7 @@ import validationSchema from "../../utils/validationSchema";
 import { Divider } from "@mui/material";
 
 interface IProps {
-  goToHome: () => void;
+  goToThanks: () => void;
 }
 
 interface IFormInputs {
@@ -35,7 +35,7 @@ interface IFormInputs {
   auth: boolean;
 }
 
-const FormPage = ({ goToHome }: IProps) => {
+const FormPage = ({ goToThanks }: IProps) => {
   const methods = useForm<IFormInputs>({
     resolver: yupResolver(validationSchema),
   });
@@ -48,7 +48,7 @@ const FormPage = ({ goToHome }: IProps) => {
       body: JSON.stringify(data),
     });
     methods.reset();
-    goToHome();
+    goToThanks();
   };
   return (
     <FormContainer>
