@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
@@ -11,6 +11,18 @@ import { Container, InputGroup } from "./styles";
 const GitData = () => {
   const [userRepos, setUserRepos] = useState<any>([]);
   const [userData, setUserData] = useState<any>();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const { watch, setValue, resetField } = useFormContext();
 
@@ -48,7 +60,7 @@ const GitData = () => {
     ).then(
       async (successResponse) => {
         if (successResponse.status !== 200) {
-          return null;
+          setOpen(true);
         } else {
           const userData = await successResponse.json();
           setValue("name", userData.name);
@@ -57,7 +69,7 @@ const GitData = () => {
         }
       },
       (failResponse) => {
-        return null;
+        setOpen(true);
       }
     );
     setUserData(userRequest);
@@ -69,7 +81,7 @@ const GitData = () => {
         <TextField label="User git" name="git_user" />
         <Button
           sx={{ width: "50px", marginTop: "1rem" }}
-          color="secondary"
+          color="primary"
           onClick={SearchUser}
         >
           <SearchIcon />
@@ -82,6 +94,17 @@ const GitData = () => {
           avatar_url={userData.avatar_url}
         />
       )}
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="error"
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          Ouve um erro na chamada para a API do Github, por favor confira se o
+          username esta correto
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

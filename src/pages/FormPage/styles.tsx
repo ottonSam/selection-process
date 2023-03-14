@@ -17,5 +17,8 @@ export const FormLabel = styled.h2`
 `;
 
 export const SubmitButton = MuiStyled(Button)`
-  margin-top: 2rem
+display: flex;  
+margin: auto;
+font-size: 1rem;
+margin-top: 2rem;
 `;

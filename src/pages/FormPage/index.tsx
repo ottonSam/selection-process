@@ -60,12 +60,12 @@ const FormPage = ({ goToHome }: IProps) => {
           onSubmit={methods.handleSubmit(formSubmitHandler)}
         >
           <GitData />
-          <TextField name="email" label="Email" />
+          <TextField name="email" label="Email" type="email" />
           <TextArea />
           <TecCheckBox />
           <FileField />
           <AuthRadio />
-          <SubmitButton type="submit" variant="outlined" color="secondary">
+          <SubmitButton type="submit" variant="outlined" color="primary">
             Enviar currículo
           </SubmitButton>
         </form>

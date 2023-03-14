@@ -4,9 +4,10 @@ import { TextFieldInput } from "./styles";
 interface IProps {
   name: string;
   label: string;
+  type?: string;
 }
 
-const TextField = ({ label, name }: IProps) => {
+const TextField = ({ label, name, type }: IProps) => {
   const {
     control,
     formState: { errors },
@@ -21,6 +22,7 @@ const TextField = ({ label, name }: IProps) => {
           <TextFieldInput
             {...field}
             label={label}
+            type={type || "text"}
             variant="outlined"
             error={!!errors[name]}
             helperText={errors[name]?.message?.toString()}
