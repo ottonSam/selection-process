@@ -27,6 +27,13 @@ const LandingPage = ({ goToForm }: IProps) => {
             Transformando ideias em soluções <Span>TechVanguard</Span>
           </Title2>
           <Body1>
+            Bem-vindo à nossa empresa, uma organização em rápido crescimento que
+            está procurando contratar os melhores desenvolvedores para se juntar
+            à nossa equipe dinâmica. Nós somos apaixonados por tecnologia e
+            inovação, e estamos comprometidos em criar soluções que atendam às
+            necessidades dos nossos clientes.
+          </Body1>
+          <Body1>
             Nossa equipe de desenvolvimento é composta por profissionais
             altamente qualificados e experientes em diversas áreas, incluindo
             desenvolvimento web, mobile, inteligência artificial e outras
@@ -34,10 +41,10 @@ const LandingPage = ({ goToForm }: IProps) => {
             talentosos que compartilham nossa paixão pela tecnologia e que
             desejam fazer parte de uma equipe de sucesso.
           </Body1>
-          <GoFormButton onClick={goToForm}>Junte-se a nós</GoFormButton>
+          <GoFormButton onClick={goToForm}>Junte-se a nós!</GoFormButton>
 
           <Title3>
-            <Span>Requisitos da vaga</Span>
+            <Span>Requisitos da vaga:</Span>
           </Title3>
           <List>
             <ListItem>
@@ -63,7 +70,7 @@ const LandingPage = ({ goToForm }: IProps) => {
         </TextBox>
 
         <ImageBox>
-          <Image src="https://assets.website-files.com/627028db0d176a2a237dfe17/627028db0d176a10207dfe51_frame.png" />
+          <Image src="https://cdn.pixabay.com/photo/2019/10/09/07/28/development-4536630_960_720.png" />
         </ImageBox>
       </Container>
     </>

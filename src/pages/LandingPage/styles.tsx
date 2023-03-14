@@ -37,6 +37,7 @@ export const Span = styled.span`
 `;
 
 export const Body1 = styled.p`
+  margin-top: 1rem;
   color: ${(props) => props.theme.colors.text};
 `;
 
@@ -56,6 +57,7 @@ export const GoFormButton = styled.a`
   display: inline-block;
   margin-top: 20px;
   padding: 8px 20px;
+  font-size: 1.2rem;
   background: ${(props) => props.theme.colors.primary};
   color: ${(props) => props.theme.colors.background};
   border-radius: 40px;
@@ -75,7 +77,8 @@ export const ImageBox = styled.div`
 `;
 
 export const Image = styled.img`
-  max-width: 340px;
+  max-width: 380px;
+  max-height: 380px;
 `;
 
 export const Circle = styled.div`
