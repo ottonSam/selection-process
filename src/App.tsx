@@ -22,7 +22,7 @@ const themes: [DefaultTheme, Theme][] = [
 
 function App() {
   const [theme, setTheme] = usePersistedState<number>("theme", 0);
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
 
   const toggleTheme = () => {
     setTheme(theme === 0 ? 1 : 0);
