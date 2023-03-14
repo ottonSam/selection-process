@@ -11,6 +11,7 @@ import TextArea from "../../components/TextArea";
 import TextField from "../../components/TextField";
 import validationSchema from "../../utils/validationSchema";
 import { Divider } from "@mui/material";
+import { apiPost } from "../../services/apiPost";
 
 interface IProps {
   goToThanks: () => void;
@@ -41,13 +42,7 @@ const FormPage = ({ goToThanks }: IProps) => {
   });
 
   const formSubmitHandler: SubmitHandler<IFormInputs> = (data: IFormInputs) => {
-    console.log(data);
-    fetch("http://api.webhookinbox.com/i/MSuFZpe3/in/", {
-      method: "POST",
-      mode: "cors",
-      body: JSON.stringify(data),
-    });
-    methods.reset();
+    apiPost(data);
     goToThanks();
   };
   return (
